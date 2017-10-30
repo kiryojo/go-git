@@ -49,6 +49,7 @@ func advertisedReferences(s *session, serviceName string) (*packp.AdvRefs, error
 		_ = res.Body.Close()
 		return nil, err
 	}
+	defer res.Body.Close()
 
 	ar := packp.NewAdvRefs()
 	if err := ar.Decode(res.Body); err != nil {
